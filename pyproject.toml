@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "imdbscraper"
+version = "0.1.0"
+description = ""
+authors = ["Thijs <thijsnieuwdorp@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scrapy = "^2.7.1"
+seaborn = "^0.12.1"
+polars = {extras = ["pandas", "pyarrow"], version = "^0.15.6"}
+pre-commit = "^3.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+isort = "^5.11.3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
