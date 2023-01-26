@@ -15,7 +15,11 @@ pre-commit = "^3.0.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
+<<<<<<< HEAD
 isort = "^5.11.3"
+=======
+isort = "^5.12.0"
+>>>>>>> 951b843 (First commit)
 
 
 [tool.poetry.group.test.dependencies]

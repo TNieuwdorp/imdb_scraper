@@ -21,11 +21,13 @@ class IMDbScraper(scrapy.Spider):
         # url = 'https://www.imdb.com/title/tt1486217/'  # Archer
         # url = 'https://www.imdb.com/title/tt1695360/'  # Legend of Korra
         # url = 'https://www.imdb.com/title/tt0944947/'  # Game of Thrones
-        url = "https://www.imdb.com/title/tt0285403/"  # Westworld
+        # url = "https://www.imdb.com/title/tt0285403/"  # Westworld
         # url = 'https://www.imdb.com/title/tt0285403/'  # Scrubs
         # url = 'https://www.imdb.com/title/tt0460649/'  # HIMYM
         # url = 'https://www.imdb.com/title/tt0108778/'  # Friends
         # url = "https://www.imdb.com/title/tt21031054/"  # Dragon age: Absolution
+        # url = "https://www.imdb.com/title/tt3230854/"  # The Expanse
+        url = "https://www.imdb.com/title/tt1266020/"  # Parks and recreation
 
         yield scrapy.Request(url=url, callback=self.parse)
 
@@ -73,7 +75,7 @@ class IMDbScraper(scrapy.Spider):
 
     @staticmethod
     def page_has_episode_list_but_no_selected_season(response):
-        """The URL does not contain a selected season, but contains 'episode' meaning it is the episode list page."""
+        """The URL is for the episode list page."""
         return "episodes" in response.url.split("/")[-1]
 
     @staticmethod
