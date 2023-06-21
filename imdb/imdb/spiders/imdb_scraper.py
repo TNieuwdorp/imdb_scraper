@@ -27,7 +27,9 @@ class IMDbScraper(scrapy.Spider):
         # url = 'https://www.imdb.com/title/tt0108778/'  # Friends
         # url = "https://www.imdb.com/title/tt21031054/"  # Dragon age: Absolution
         # url = "https://www.imdb.com/title/tt3230854/"  # The Expanse
-        url = "https://www.imdb.com/title/tt1266020/"  # Parks and recreation
+        # url = "https://www.imdb.com/title/tt1266020/"  # Parks and recreation
+        # url = "https://www.imdb.com/title/tt0412142"  # House
+        url = "https://www.imdb.com/title/tt4158110"  # Mr Robot
 
         yield scrapy.Request(url=url, callback=self.parse)
 
@@ -41,14 +43,11 @@ class IMDbScraper(scrapy.Spider):
             yield self.request_episode_list(response)
 
     def request_episode_list(self, response):
-        return scrapy.Request(
-            url=response.url + "episodes", callback=self.parse
-        )
+        return scrapy.Request(url=response.url + "episodes", callback=self.parse)
 
     def request_all_season_pages(self, response):
         seasons = [
-            s.strip()
-            for s in response.css("select#bySeason > option::text").extract()
+            s.strip() for s in response.css("select#bySeason > option::text").extract()
         ]
         for season in seasons:
             yield scrapy.Request(
